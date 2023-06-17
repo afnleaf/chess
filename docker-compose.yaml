@@ -41,10 +41,29 @@ services:
     # Environment variables are "great" (technically not for secrets) for defining secrets, hostnames and ports
     # NOTE: Variables defined under environment are not available during the image build process.
     # To use build time environment variables the build.args is the place to define them
-    #environment:
-    #  - ENV_VARIABLE_1=value1
-    #  - ENV_VARIABLE_2=value2
+    environment:
+      - ENV_VARIABLE_1=value1
+      - ENV_VARIABLE_2=value2
 
     # This creates interactive mode which lets us execute commands in a shell when the container is running.
     stdin_open: true
     tty: true
+
+    # FRONTEND
+  frontend:
+    build:
+      context: ./frontend
+      #dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    #restart: always
+  
+    environment:
+      - PUBLIC_SERVER_PORT=8080
+      - PUBLIC_SERVER_HOST=http://backend
+
+    stdin_open: true
+    tty: true
+
+    depends_on:
+      - backend
