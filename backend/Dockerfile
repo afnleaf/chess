@@ -19,5 +19,5 @@ RUN cargo build --release
 
 # Define the command to run the server
 # here instead of this just put the name of of the command you want to run
-#ex CMD ["cargo", "run"]
-CMD ["ls", "-la"]
+CMD ["cargo", "run"]
+#CMD ["ls", "-la"]

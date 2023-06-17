@@ -49,7 +49,7 @@ services:
     stdin_open: true
     tty: true
 
-    # FRONTEND
+  # FRONTEND
   frontend:
     build:
       context: ./frontend
