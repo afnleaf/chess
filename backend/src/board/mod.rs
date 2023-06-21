@@ -13,7 +13,7 @@ const BOARD_SIZE: usize = BOARD_WIDTH * BOARD_HEIGHT;
 
 #[derive(Debug)]
 pub struct Board {
-    pieces: [Piece; N_PIECE_TYPES],
+    pub pieces: [Piece; N_PIECE_TYPES],
 }
 
 impl Board {

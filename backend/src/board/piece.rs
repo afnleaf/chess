@@ -17,6 +17,9 @@ impl PieceColor {
 
 #[derive(Debug)]
 #[repr(usize)]
+
+// almost definitely better to just have a struct and then a piece/color type that is used for
+// calculating legal moves
 pub enum Piece {
     Pawn(u64, PieceColor),
     Knight(u64, PieceColor),
@@ -27,12 +30,14 @@ pub enum Piece {
 }
 
 impl Piece {
-    pub fn move_piece(&mut self, dest: u8) -> Result<(), String> {
-        
+    pub fn move_piece(&mut self, src: usize, dest: usize) -> Result<(), String> {
+        let piece_mask = 0b1 << src;
+        let new_pos = 0b1 << dest;
+
         match self {
             Piece::Pawn(data, c) => {
                 println!("im a pawn");
-                *data = *data << dest;
+                *data = *data - piece_mask + new_pos; 
             },
             _ => ()
         }
